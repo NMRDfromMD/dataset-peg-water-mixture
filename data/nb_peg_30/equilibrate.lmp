@@ -29,10 +29,9 @@ fix myshk H2O shake 1.0e-5 200 0 b 6 a 9
 fix mynve all nve/limit 0.1
 fix myber all temp/berendsen 1 1 10
 
-dump mydmp1 all atom 1000 production-all.lammpstrj
-
 # output
 thermo 1000
+dump mydmp1 all atom 10000 equilibrate-all.lammpstrj
 
 # run
 run 10000
