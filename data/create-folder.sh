@@ -2,7 +2,7 @@
 
 set -e
 
-for n_peg in 22
+for n_peg in 30
 do
 
     folder=nb_peg_${n_peg}/

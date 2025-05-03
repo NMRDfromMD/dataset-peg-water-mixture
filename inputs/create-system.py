@@ -5,8 +5,8 @@ import numpy as np
 from utilities import PEGgenerator, place_molecules, write_topol, write_conf, write_lammps, prepare_lammps
 
 # fix the number of polymer
-Number_polymer = 35
-EOperH2O = 4
+Number_polymer = 30
+EOperH2O = 0.5
 Nseg = 5
 
 atomsPEG, bondsPEG, anglesPEG, dihedralsPEG = PEGgenerator(Nseg)
@@ -20,6 +20,9 @@ print('PEG of molar mass '+str(molarmass)+' g/mol')
 Number_water = np.int32(nO*Number_polymer/EOperH2O)
 print('The total number of water molecules is '+str(Number_water))
 print('The total number of PEG molecules is '+str(Number_polymer))
+
+print('The total number of H-PEG is '+str(nH*Number_polymer))
+print('The total number of H-H2O is '+str(2*Number_water))
 
 # Create the GROMACS files
 atoms, bonds, angles, dihedrals, atoName, resName, Lx, Ly, Lz = place_molecules(Number_polymer, Number_water, atomsPEG, bondsPEG, anglesPEG, dihedralsPEG)
