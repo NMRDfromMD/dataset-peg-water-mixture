@@ -24,20 +24,28 @@ group H2O type 6 7
 group HYD type 3 5 7
 
 # dynamics
-timestep 1
+timestep 0.1
 fix myshk H2O shake 1.0e-5 200 0 b 6 a 9
 fix mynve all nve/limit 0.1
-fix myber all temp/berendsen 1 1 100
+fix myber all temp/berendsen 1 1 10
 
 # output
 thermo 1000
 
 # run
-run 5000
+run 10000
 unfix mynve
 unfix myber
 
 # dynamics
+timestep 0.5
+fix mynvt all nvt temp 300 300 50
+
+run 10000
+unfix mynvt
+
+# dynamics
+timestep 1.0
 fix mynpt all npt temp 300 300 100 iso 100 100 1000
 
 # output
