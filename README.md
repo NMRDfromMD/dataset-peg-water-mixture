@@ -1,4 +1,4 @@
-Water-polymer mixture Dataset for NMRDfromMD
+Polymer-Water Mixture Dataset for NMRDfromMD
 ============================================
 
 <a href="webp">
@@ -6,7 +6,7 @@ Water-polymer mixture Dataset for NMRDfromMD
 </a>
 
 LAMMPS input files and raw trajectory files used to generate the data
-and figure from [nmrdfrommd](https://nmrdfrommd.readthedocs.io). The system
+and figure from [nmrdfrommd](https://nmrdfrommd.github.io). The system
 consists of a mixture of water a polymer (polyethylene glycol 300, or PEG 300).
 
 ## Repository structure
