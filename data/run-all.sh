@@ -5,10 +5,11 @@ set -e
 # Change accordingly
 lmp=/home/simon/Softwares/lammps-27Jun2024/src/lmp_mpi
 
-for T in 0.8 1.0 1.2 1.5 1.8 2.2 2.6 3.0
+for n_peg in 22
 do
-    folder=T${T}/
+    folder=nb_peg_${n_peg}/
     cd $folder
-        mpirun -np 8 ${lmp} -in input.lmp
+        mpirun -np 8 ${lmp} -in equilibrate.lmp
+	mpirun -np 8 ${lmp} -in production.lmp
     cd .. 
 done
