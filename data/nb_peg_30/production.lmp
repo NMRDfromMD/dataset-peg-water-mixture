@@ -14,7 +14,7 @@ pair_style lj/cut/tip4p/long 6 7 6 9 0.1546 14.0
 kspace_style pppm/tip4p 1.0e-5
 special_bonds lj 0.0 0.0 0.5
 
-read_data initial.data
+read_data equilibrate.data
 include parameters-h2o.inc
 include parameters-peg.inc
 
@@ -34,9 +34,18 @@ dump mydmp2 HYD xtc 2000 production-hyd.xtc
 thermo 2000
 
 # run 
-run 10000000 # 10 ns
-
+run 0 # 10000000 # 10 ns
+undump mydmp1
+undump mydmp2
+ 
 write_data prod.data
 write_dump all atom production-all.lammpstrj
 write_dump HYD atom production-hyd.lammpstrj
+
+set mol * image 0 0 0
+
+run 0 # 20000
+
+write_dump all custom production-xu.lammpstrj id type xu yu zu 
+
 
