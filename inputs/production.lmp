@@ -14,7 +14,7 @@ pair_style lj/cut/tip4p/long 6 7 6 9 0.1546 14.0
 kspace_style pppm/tip4p 1.0e-5
 special_bonds lj 0.0 0.0 0.5
 
-read_data initial.data
+read_data equilibrate.data
 include parameters-h2o.inc
 include parameters-peg.inc
 
@@ -26,17 +26,15 @@ group HYD type 3 5 7
 # dynamics
 timestep 1
 fix myshk H2O shake 1.0e-5 200 0 b 6 a 9
-fix mynpt all npt temp 300 300 100 iso 1 1 1000
+fix mynvt all nvt temp 300 300 100
 
-# output - print positions every picosecond
-dump mydmp1 all xtc 1000 production-all.xtc
-dump mydmp2 HYD xtc 1000 production-hyd.xtc
-thermo 1000
+# output - print positions every 2 picosecond
+dump mydmp all xtc 2000 production.xtc
+thermo 2000
 
 # run 
 run 10000000 # 10 ns
-
+ 
 write_data prod.data
-write_dump all atom production-all.lammpstrj
-write_dump HYD atom production-hyd.lammpstrj
+write_dump all atom production.lammpstrj
 

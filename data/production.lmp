@@ -29,23 +29,12 @@ fix myshk H2O shake 1.0e-5 200 0 b 6 a 9
 fix mynvt all nvt temp 300 300 100
 
 # output - print positions every 2 picosecond
-dump mydmp1 all xtc 2000 production-all.xtc
-dump mydmp2 HYD xtc 2000 production-hyd.xtc
+dump mydmp all xtc 2000 production.xtc
 thermo 2000
 
 # run 
 run 10000000 # 10 ns
-undump mydmp1
-undump mydmp2
  
 write_data prod.data
-write_dump all atom production-all.lammpstrj
-write_dump HYD atom production-hyd.lammpstrj
-
-set mol * image 0 0 0
-
-run 20000
-
-write_dump all custom production-xu.lammpstrj id type xu yu zu 
-
+write_dump all atom production.lammpstrj
 
