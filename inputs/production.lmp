@@ -35,6 +35,6 @@ thermo 2000
 # run 
 run 10000000 # 10 ns
  
-write_data prod.data
+write_data production.data
 write_dump all atom production.lammpstrj
 
