@@ -34,7 +34,7 @@ dump mydmp2 HYD xtc 2000 production-hyd.xtc
 thermo 2000
 
 # run 
-run 0 # 10000000 # 10 ns
+run 10000000 # 10 ns
 undump mydmp1
 undump mydmp2
  
@@ -44,7 +44,7 @@ write_dump HYD atom production-hyd.lammpstrj
 
 set mol * image 0 0 0
 
-run 0 # 20000
+run 20000
 
 write_dump all custom production-xu.lammpstrj id type xu yu zu 
 
