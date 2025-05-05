@@ -31,14 +31,14 @@ git clone https://github.com/NMRDfromMD/dataset-peg-water-mixture.git
 
 To regenerate the trajectory files, navigate to the [data](data) folder:
 ```bash
-cd dataset-peg-water-mixture/data
+cd data
 ```
-Update the path to LAMMPS in ``run-all.sh`` to reflect your system
+Update the path to LAMMPS in ``run.sh`` to reflect your system
 configuration:
 ```bash
 lmp=/home/simon/Softwares/lammps-27Jun2024/src/lmp_mpi
 ```
-Then, execute ``run-all.sh``.
+Then, execute ``run.sh``.
 
 ## License
 
