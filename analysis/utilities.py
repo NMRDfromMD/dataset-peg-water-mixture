@@ -21,14 +21,12 @@ def save_result(data, n, name):
     C = data["gij"][0]
     R1 = data["R1"]
     R2 = data["R2"]
-    N = data.group_j.atoms.n_atoms
     
     # Save updated data
     result = {
         "t": t,
         "f": f,
         "C": C,
-        "N": N,
         "R1": R1,
         "R2": R2
     }
