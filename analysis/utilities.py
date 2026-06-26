@@ -18,7 +18,7 @@ def save_result(data, n, name):
     # Extract relevant data
     t = data["t"]
     f = data["f"]
-    C = data.["gij"][0]
+    C = data["gij"][0]
     R1 = data["R1"]
     R2 = data["R2"]
     N = data.group_j.atoms.n_atoms
