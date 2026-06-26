@@ -37,40 +37,49 @@ for n in [5, 20, 80, 320, 1280]:
         atom_group=H_ALL,
         neighbor_group = H_ALL,
         number_i=n)
-    nmr_all.run_analysis()
-    save_result(nmr_all, n, f"nmr_all")
+    results_nmr_all = nmr_all.run_analysis()
+    save_result(results_nmr_all, n, f"nmr_all")
 
     nmr_intra_H2O = NMRD(
         u=u,
         atom_group=H_H2O,
         type_analysis="intra_molecular",
         number_i=n)
-    nmr_intra_H2O.run_analysis()
-    save_result(nmr_intra_H2O, n, f"nmr_intra_H2O")
+    results_nmr_intra_H2O = nmr_intra_H2O.run_analysis()
+    save_result(results_nmr_intra_H2O, n, f"nmr_intra_H2O")
 
     nmr_intra_PEG = NMRD(
         u=u,
         atom_group=H_PEG,
         type_analysis="intra_molecular",
         number_i=n)
-    nmr_intra_PEG.run_analysis()
-    save_result(nmr_intra_PEG, n, f"nmr_intra_PEG")
+    reults_nmr_intra_PEG = nmr_intra_PEG.run_analysis()
+    save_result(reults_nmr_intra_PEG, n, f"nmr_intra_PEG")
 
     nmr_inter_H2O = NMRD(
         u=u,
         atom_group=H_H2O,
         type_analysis="inter_molecular",
         number_i=n)
-    nmr_inter_H2O.run_analysis()
-    save_result(nmr_inter_H2O, n, f"nmr_inter_H2O")
+    results_nmr_inter_H2O = nmr_inter_H2O.run_analysis()
+    save_result(results_nmr_inter_H2O, n, f"nmr_inter_H2O")
 
     nmr_inter_PEG = NMRD(
         u=u,
         atom_group=H_PEG,
         type_analysis="inter_molecular",
         number_i=n)
-    nmr_inter_PEG.run_analysis()
-    save_result(nmr_inter_PEG, n, f"nmr_inter_PEG")
+    results_nmr_inter_PEG = nmr_inter_PEG.run_analysis()
+    save_result(results_nmr_inter_PEG, n, f"nmr_inter_PEG")
+
+    nmr_H2O_PEG = NMRD(
+        u=u,
+        atom_group=H_PEG,
+        neighbor_group=H_H2O,
+        type_analysis="inter_molecular",
+        number_i=n)
+    results_nmr_H2O_PEG = nmr_H2O_PEG.run_analysis()
+    save_result(results_nmr_H2O_PEG, n, f"nmr_H2O_PEG")
 
     tf = time.time()
     print("time", np.round(tf-ti,1))

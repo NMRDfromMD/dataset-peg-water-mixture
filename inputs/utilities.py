@@ -331,7 +331,6 @@ def place_molecules(Np, NH2O, atomsPEG, bondsPEG, anglesPEG, dihedralsPEG):
                 fail_attempt += 1
         attempt += 1
     
-    
     print('box size = '+str(Lx)+' nm')
     atoms = atoms[:cptatoms]
     bonds = bonds[:cptbonds]
