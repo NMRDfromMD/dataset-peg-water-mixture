@@ -28,7 +28,7 @@ H_PEG = u.select_atoms("type 3 5")
 H_H2O = u.select_atoms("type 7")
 H_ALL = H_PEG + H_H2O
 
-for n in [5, 20, 80, 320, 1280]:
+for n in [5, 20, 60, 0]:
 
     ti = time.time()
 
@@ -76,7 +76,6 @@ for n in [5, 20, 80, 320, 1280]:
         u=u,
         atom_group=H_PEG,
         neighbor_group=H_H2O,
-        type_analysis="inter_molecular",
         number_i=n)
     results_nmr_H2O_PEG = nmr_H2O_PEG.run_analysis()
     save_result(results_nmr_H2O_PEG, n, f"nmr_H2O_PEG")

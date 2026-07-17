@@ -21,13 +21,41 @@ def save_result(data, n, name):
     C = data["gij"][0]
     R1 = data["R1"]
     R2 = data["R2"]
-    
+    R1_err = data["R1_err"]
+    R2_err = data["R2_err"]
+
     # Save updated data
     result = {
         "t": t,
         "f": f,
         "C": C,
         "R1": R1,
-        "R2": R2
+        "R2": R2,
+        "R1_err": R1_err,
+        "R2_err": R2_err
     }
     np.save(saving_file, result)
+
+def log_bin(x, y, num_bins=50):
+    x = np.array(x)
+    y = np.array(y)
+
+    assert np.all(x > 0)
+
+    log_min = np.log10(x.min())
+    log_max = np.log10(x.max())
+
+    log_bins = np.logspace(log_min, log_max, num_bins + 1)
+    bin_centers = np.sqrt(log_bins[:-1] * log_bins[1:])  # geometric mean
+
+    indices = np.digitize(x, log_bins)
+
+    binned_y = [
+        y[indices == i].mean() if np.any(indices == i) else np.nan
+        for i in range(1, len(log_bins))
+    ]
+
+    bin_centers = bin_centers[~np.isnan(binned_y)]
+    binned_y = np.array(binned_y)[~np.isnan(binned_y)]
+
+    return bin_centers, binned_y
